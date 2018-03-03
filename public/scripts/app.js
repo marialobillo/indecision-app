@@ -2,12 +2,10 @@
 
 console.log("App.js is running");
 
-// create app object titel/subtitle
-// use title/subtitle in the template
-// render template
 var app = {
 	title: 'Indecision App',
-	subtitle: 'Let the computer decides'
+	subtitle: 'Let the computer decides',
+	options: ['One', 'Two']
 
 	// JSX - Javascript XML
 };var user = {
@@ -35,12 +33,17 @@ var template = React.createElement(
 	React.createElement(
 		'h1',
 		null,
-		app.title ? app.title : 'Anonymous'
+		app.title
+	),
+	app.subtitle && React.createElement(
+		'p',
+		null,
+		app.subtitle
 	),
 	React.createElement(
 		'p',
 		null,
-		app.subtitle
+		app.options.length > 0 ? 'Here are your options' : 'No options'
 	),
 	user.age && user.age > 18 && React.createElement(
 		'p',

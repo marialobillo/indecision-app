@@ -1,11 +1,9 @@
 console.log("App.js is running");
 
-// create app object titel/subtitle
-// use title/subtitle in the template
-// render template
 var app = {
 	title: 'Indecision App',
-	subtitle: 'Let the computer decides'
+	subtitle: 'Let the computer decides',
+	options : ['One', 'Two']
 }
 
 // JSX - Javascript XML
@@ -23,10 +21,15 @@ function getLocation(location){
 	}
 }
 
+
+
 var template = (
 <div>
-	<h1>{app.title ? app.title : 'Anonymous'}</h1>
-	<p>{app.subtitle}</p>
+
+	<h1>{app.title}</h1>
+	{app.subtitle && <p>{app.subtitle}</p>}
+	<p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+
 
 	{(user.age && user.age > 18) && <p>Age : {user.age} </p>}
 	{getLocation(user.location)}
