@@ -11,15 +11,25 @@ var app = {
 // JSX - Javascript XML
 var user = {
 	name: 'Maria',
-	age: 36,
-	location: 'Spain'
+	age: 17,
+	location: 'New York'
 };
+
+function getLocation(location){
+	if(location){
+		return <p>Location: {location}</p>;
+	} else{
+		return undefined;
+	}
+}
 
 var template = (
 <div>
-	<h1>{app.title}</h1>
+	<h1>{app.title ? app.title : 'Anonymous'}</h1>
 	<p>{app.subtitle}</p>
-	<p>Location: {user.location}</p>
+
+	{(user.age && user.age > 18) && <p>Age : {user.age} </p>}
+	{getLocation(user.location)}
 </div>
 );
 

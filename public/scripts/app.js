@@ -12,9 +12,22 @@ var app = {
 	// JSX - Javascript XML
 };var user = {
 	name: 'Maria',
-	age: 36,
-	location: 'Spain'
+	age: 17,
+	location: 'New York'
 };
+
+function getLocation(location) {
+	if (location) {
+		return React.createElement(
+			'p',
+			null,
+			'Location: ',
+			location
+		);
+	} else {
+		return undefined;
+	}
+}
 
 var template = React.createElement(
 	'div',
@@ -22,19 +35,21 @@ var template = React.createElement(
 	React.createElement(
 		'h1',
 		null,
-		app.title
+		app.title ? app.title : 'Anonymous'
 	),
 	React.createElement(
 		'p',
 		null,
 		app.subtitle
 	),
-	React.createElement(
+	user.age && user.age > 18 && React.createElement(
 		'p',
 		null,
-		'Location: ',
-		user.location
-	)
+		'Age : ',
+		user.age,
+		' '
+	),
+	getLocation(user.location)
 );
 
 var appRoot = document.getElementById('app');
