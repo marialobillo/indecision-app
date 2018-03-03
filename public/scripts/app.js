@@ -1,22 +1,42 @@
-"use strict";
+'use strict';
 
 console.log("App.js is running");
 
-// JSX - Javascript XML
+// create app object titel/subtitle
+// use title/subtitle in the template
+// render template
+var app = {
+	title: 'Indecision App',
+	subtitle: 'Let the computer decides'
+
+	// JSX - Javascript XML
+};var user = {
+	name: 'Maria',
+	age: 36,
+	location: 'Spain'
+};
+
 var template = React.createElement(
-	"div",
+	'div',
 	null,
 	React.createElement(
-		"h1",
+		'h1',
 		null,
-		"Does this change!!"
+		app.title
 	),
 	React.createElement(
-		"p",
+		'p',
 		null,
-		"This is some info."
+		app.subtitle
+	),
+	React.createElement(
+		'p',
+		null,
+		'Location: ',
+		user.location
 	)
 );
+
 var appRoot = document.getElementById('app');
 
 ReactDOM.render(template, appRoot);
