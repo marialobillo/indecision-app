@@ -10,28 +10,51 @@ var app = {
 
 var count = 0;
 var addOne = function addOne() {
-	console.log('addOne');
+	count++;
+	renderCounterApp();
 };
-var templateTwo = React.createElement(
-	'div',
-	null,
-	React.createElement(
-		'h1',
-		null,
-		'Count: ',
-		count
-	),
-	React.createElement(
-		'button',
-		{ onClick: addOne, className: 'btn btn-info' },
-		'+1'
-	)
-);
+var minusOne = function minusOne() {
+	count--;
+	renderCounterApp();
+};
+var resetCount = function resetCount() {
+	count = 0;
+	renderCounterApp();
+};
 
 // Make button "-1" setup minusOne function and register - log "minus one"
 // Make button to reset - count = 0 , log "reset"
 
-console.log(templateTwo);
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+var renderCounterApp = function renderCounterApp() {
+	var templateTwo = React.createElement(
+		'div',
+		null,
+		React.createElement(
+			'h1',
+			null,
+			'Count: ',
+			count
+		),
+		React.createElement(
+			'button',
+			{ onClick: addOne, className: 'btn btn-success' },
+			'+1'
+		),
+		React.createElement(
+			'button',
+			{ onClick: minusOne, className: 'btn btn-danger' },
+			'-1'
+		),
+		React.createElement(
+			'button',
+			{ onClick: resetCount, className: 'btn btn-warning' },
+			'Reset'
+		)
+	);
+
+	ReactDOM.render(templateTwo, appRoot);
+};
+
+renderCounterApp();
