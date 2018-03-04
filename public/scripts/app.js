@@ -55,6 +55,27 @@ var template = React.createElement(
 	getLocation(user.location)
 );
 
+var count = 0;
+var addOne = function addOne() {
+	console.log('addOne');
+};
+var templateTwo = React.createElement(
+	'div',
+	null,
+	React.createElement(
+		'h1',
+		null,
+		'Count: ',
+		count
+	),
+	React.createElement(
+		'button',
+		{ onClick: addOne, className: 'btn btn-info' },
+		'+1'
+	)
+);
+
+console.log(templateTwo);
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);
