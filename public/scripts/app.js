@@ -53,7 +53,7 @@ var render = function render() {
 		),
 		React.createElement(
 			'button',
-			{ onClick: onRemoveAll },
+			{ onClick: onRemoveAll, className: 'btn btn-danger' },
 			'Remove All'
 		),
 		React.createElement(
@@ -76,7 +76,7 @@ var render = function render() {
 			React.createElement('input', { type: 'text', name: 'option' }),
 			React.createElement(
 				'button',
-				null,
+				{ className: 'btn btn-info' },
 				'Add Option'
 			)
 		)
