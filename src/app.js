@@ -1,46 +1,50 @@
-console.log("App.js is running");
+console.log('App.js is running!');
 
-var app = {
+const app = {
 	title: 'Indecision App',
-	subtitle: 'Let the computer decides',
-	options : ['One', 'Two']
-}
-
-
-
-let count = 0;
-const addOne = () => {
-	count++;
-	renderCounterApp();
-};
-const minusOne = () => {
-	count--;
-	renderCounterApp();
-};
-const resetCount = () =>{
-	count = 0;
-	renderCounterApp();
+	subtitle: 'Put your life in the hands of a computer',
+	options: []
 };
 
+const onFormSubmit = (e) => {
+	e.preventDefault();
 
-// Make button "-1" setup minusOne function and register - log "minus one"
-// Make button to reset - count = 0 , log "reset"
+	const option = e.target.elements.option.value;
 
-var appRoot = document.getElementById('app');
+	if (option) {
+		app.options.push(option);
+		e.target.elements.option.value = '';
+		render();
+	}
+};
 
+const onRemoveAll = () => {
+	app.options = [];
+	render();
+};
 
+const appRoot = document.getElementById('app');
 
-const renderCounterApp = () => {
-	const templateTwo = (
+const render = () => {
+	const template = (
 		<div>
-			<h1>Count: {count}</h1>
-			<button onClick={addOne} className="btn btn-success">+1</button>
-			<button onClick={minusOne} className="btn btn-danger">-1</button>
-			<button onClick={resetCount} className="btn btn-warning">Reset</button>
+			<h1>{app.title}</h1>
+			{app.subtitle && <p>{app.subtitle}</p>}
+			<p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+			<p>{app.options.length}</p>
+			<button onClick={onRemoveAll}>Remove All</button>
+			<ol>
+				<li>Item one</li>
+				<li>Item two</li>
+			</ol>
+			<form onSubmit={onFormSubmit}>
+				<input type="text" name="option" />
+				<button>Add Option</button>
+			</form>
 		</div>
 	);
 
-	ReactDOM.render(templateTwo, appRoot);
+	ReactDOM.render(template, appRoot);
 };
 
-renderCounterApp();
+render();
