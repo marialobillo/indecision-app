@@ -6,54 +6,7 @@ var app = {
 	title: 'Indecision App',
 	subtitle: 'Let the computer decides',
 	options: ['One', 'Two']
-
-	// JSX - Javascript XML
-};var user = {
-	name: 'Maria',
-	age: 17,
-	location: 'New York'
 };
-
-function getLocation(location) {
-	if (location) {
-		return React.createElement(
-			'p',
-			null,
-			'Location: ',
-			location
-		);
-	} else {
-		return undefined;
-	}
-}
-
-var template = React.createElement(
-	'div',
-	null,
-	React.createElement(
-		'h1',
-		null,
-		app.title
-	),
-	app.subtitle && React.createElement(
-		'p',
-		null,
-		app.subtitle
-	),
-	React.createElement(
-		'p',
-		null,
-		app.options.length > 0 ? 'Here are your options' : 'No options'
-	),
-	user.age && user.age > 18 && React.createElement(
-		'p',
-		null,
-		'Age : ',
-		user.age,
-		' '
-	),
-	getLocation(user.location)
-);
 
 var count = 0;
 var addOne = function addOne() {
@@ -74,6 +27,9 @@ var templateTwo = React.createElement(
 		'+1'
 	)
 );
+
+// Make button "-1" setup minusOne function and register - log "minus one"
+// Make button to reset - count = 0 , log "reset"
 
 console.log(templateTwo);
 var appRoot = document.getElementById('app');

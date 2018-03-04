@@ -6,41 +6,12 @@ var app = {
 	options : ['One', 'Two']
 }
 
-// JSX - Javascript XML
-var user = {
-	name: 'Maria',
-	age: 17,
-	location: 'New York'
-};
 
-function getLocation(location){
-	if(location){
-		return <p>Location: {location}</p>;
-	} else{
-		return undefined;
-	}
-}
-
-
-
-var template = (
-<div>
-
-	<h1>{app.title}</h1>
-
-	{app.subtitle && <p>{app.subtitle}</p>}
-	<p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
-
-
-	{(user.age && user.age > 18) && <p>Age : {user.age} </p>}
-	{getLocation(user.location)}
-</div>
-);
 
 let count = 0;
 const addOne = () => {
 	console.log('addOne');
-	
+
 };
 const templateTwo = (
 	<div>
@@ -48,6 +19,9 @@ const templateTwo = (
 		<button onClick={addOne} className="btn btn-info">+1</button>
 	</div>
 );
+
+// Make button "-1" setup minusOne function and register - log "minus one"
+// Make button to reset - count = 0 , log "reset"
 
 console.log(templateTwo);
 var appRoot = document.getElementById('app');
