@@ -47,7 +47,7 @@ const render = () => {
 			</ol>
 			<form onSubmit={onFormSubmit}>
 				<input type="text" name="option" />
-				<button className="btn btn-info">Add Option</button>
+				<button className="btn btn-success">Add Option</button>
 			</form>
 		</div>
 	);
