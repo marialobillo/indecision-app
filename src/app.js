@@ -149,4 +149,4 @@ class AddOption extends React.Component {
 //   );
 // };
 
-ReactDOM.render(<IndecisionApp options={['Devils den', 'Second District']}/>, document.getElementById('app'));
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'));

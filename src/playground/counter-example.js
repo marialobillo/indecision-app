@@ -37,7 +37,9 @@ class Counter extends React.Component{
 // Create 3 methods : handleAddOne, handlMinusOne, handlReset
 // Use console.log to print method name
 // Wire up onClick & bind in the constructor
-
+Counter.defaultProps = {
+	counter: 0
+};
 
 ReactDOM.render(<Counter />, document.getElementById('app'));
 

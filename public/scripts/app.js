@@ -216,4 +216,4 @@ var AddOption = function (_React$Component2) {
 //   );
 // };
 
-ReactDOM.render(React.createElement(IndecisionApp, { options: ['Devils den', 'Second District'] }), document.getElementById('app'));
+ReactDOM.render(React.createElement(IndecisionApp, null), document.getElementById('app'));
