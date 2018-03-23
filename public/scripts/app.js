@@ -30,10 +30,8 @@ var IndecisionApp = function (_React$Component) {
 	_createClass(IndecisionApp, [{
 		key: 'handleDeleteOptions',
 		value: function handleDeleteOptions() {
-			this.setState(function () {
-				return {
-					options: []
-				};
+			this.setStat(function () {
+				return { options: [] };
 			});
 		}
 	}, {
@@ -109,7 +107,7 @@ var Header = function Header(props) {
 };
 
 Header.defaultProps = {
-	title: 'Some default title',
+	title: 'Indecision App by Default',
 	subtitle: 'Put your life in tha hand of a computer'
 };
 
@@ -178,6 +176,7 @@ var AddOption = function (_React$Component2) {
 			this.setState(function () {
 				return { error: error };
 			});
+			this.refs.option.value = ''; //.....
 		}
 	}, {
 		key: 'render',
@@ -193,7 +192,7 @@ var AddOption = function (_React$Component2) {
 				React.createElement(
 					'form',
 					{ onSubmit: this.handleAddOption },
-					React.createElement('input', { type: 'text', name: 'option', className: 'form-control' }),
+					React.createElement('input', { type: 'text', name: 'option', ref: 'option', className: 'form-control' }),
 					React.createElement(
 						'button',
 						{ className: 'btn btn-warning' },

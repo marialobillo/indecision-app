@@ -11,11 +11,7 @@ class IndecisionApp extends React.Component {
 		};
 	}
 	handleDeleteOptions() {
-		this.setState(() => {
-			return {
-				options: []
-			};
-		});
+		this.setStat(() => ({options: [] }));
 	}
 	handlePick() {
 		const randomNum = Math.floor(Math.random() * this.state.options.length);
@@ -72,7 +68,7 @@ const Header = (props) => {
 };
 
 Header.defaultProps = {
-	title: 'Some default title',
+	title: 'Indecision App by Default',
 	subtitle: 'Put your life in tha hand of a computer'
 }
 
@@ -126,13 +122,14 @@ class AddOption extends React.Component {
 		this.setState(() => {
 			return { error };
 		});
+		this.refs.option.value = '';   //.....
 	}
 	render() {
 		return (
 			<div>
 				{this.state.error && <p>{this.state.error}</p>}
 				<form onSubmit={this.handleAddOption}>
-					<input type="text" name="option" className="form-control" />
+					<input type="text" name="option" ref="option" className="form-control" />
 					<button className="btn btn-warning">Add Option</button>
 				</form>
 			</div>
