@@ -22,7 +22,7 @@ var IndecisionApp = function (_React$Component) {
 		_this.handlePick = _this.handlePick.bind(_this);
 		_this.handleAddOption = _this.handleAddOption.bind(_this);
 		_this.state = {
-			options: []
+			options: [props.options]
 		};
 		return _this;
 	}
@@ -67,7 +67,7 @@ var IndecisionApp = function (_React$Component) {
 			return React.createElement(
 				'div',
 				null,
-				React.createElement(Header, { title: title, subtitle: subtitle }),
+				React.createElement(Header, { subtitle: subtitle }),
 				React.createElement(Action, {
 					hasOptions: this.state.options.length > 0,
 					handlePick: this.handlePick
@@ -86,6 +86,10 @@ var IndecisionApp = function (_React$Component) {
 	return IndecisionApp;
 }(React.Component);
 
+IndecisionApp.defaultProps = {
+	options: []
+};
+
 var Header = function Header(props) {
 	return React.createElement(
 		'div',
@@ -95,12 +99,18 @@ var Header = function Header(props) {
 			null,
 			props.title
 		),
-		React.createElement(
+		props.subtitle && React.createElement(
 			'h2',
 			null,
+			' ',
 			props.subtitle
 		)
 	);
+};
+
+Header.defaultProps = {
+	title: 'Some default title',
+	subtitle: 'Put your life in tha hand of a computer'
 };
 
 var Action = function Action(props) {
@@ -111,7 +121,8 @@ var Action = function Action(props) {
 			'button',
 			{
 				onClick: props.handlePick,
-				disabled: !props.hasOptions
+				disabled: !props.hasOptions,
+				className: 'btn btn-info'
 			},
 			'What should I do?'
 		)
@@ -124,7 +135,7 @@ var Options = function Options(props) {
 		null,
 		React.createElement(
 			'button',
-			{ onClick: props.handleDeleteOptions },
+			{ onClick: props.handleDeleteOptions, className: 'btn btn-danger' },
 			'Remove All'
 		),
 		props.options.map(function (option) {
@@ -182,10 +193,10 @@ var AddOption = function (_React$Component2) {
 				React.createElement(
 					'form',
 					{ onSubmit: this.handleAddOption },
-					React.createElement('input', { type: 'text', name: 'option' }),
+					React.createElement('input', { type: 'text', name: 'option', className: 'form-control' }),
 					React.createElement(
 						'button',
-						null,
+						{ className: 'btn btn-warning' },
 						'Add Option'
 					)
 				)
@@ -205,4 +216,4 @@ var AddOption = function (_React$Component2) {
 //   );
 // };
 
-ReactDOM.render(React.createElement(IndecisionApp, null), document.getElementById('app'));
+ReactDOM.render(React.createElement(IndecisionApp, { options: ['Devils den', 'Second District'] }), document.getElementById('app'));
