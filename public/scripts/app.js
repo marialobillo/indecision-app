@@ -23,12 +23,27 @@ var IndecisionApp = function (_React$Component) {
 		_this.handleAddOption = _this.handleAddOption.bind(_this);
 		_this.handleDeleteOption = _this.handleDeleteOption.bind(_this);
 		_this.state = {
-			options: [props.options]
+			options: props.options
 		};
 		return _this;
 	}
 
 	_createClass(IndecisionApp, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			console.log('fetching data');
+		}
+	}, {
+		key: 'componentDidUpdate',
+		value: function componentDidUpdate(prevProps, prevState) {
+			console.log('saving data');
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			console.log('componentWillUnmount');
+		}
+	}, {
 		key: 'handleDeleteOptions',
 		value: function handleDeleteOptions() {
 			this.setState(function () {
@@ -63,13 +78,14 @@ var IndecisionApp = function (_React$Component) {
 			}
 
 			this.setState(function (prevState) {
-				return { options: prevState.options.concat(option) };
+				return {
+					options: prevState.options.concat(option)
+				};
 			});
 		}
 	}, {
 		key: 'render',
 		value: function render() {
-			var title = 'Indecision';
 			var subtitle = 'Put your life in the hands of a computer';
 
 			return React.createElement(
@@ -111,15 +127,13 @@ var Header = function Header(props) {
 		props.subtitle && React.createElement(
 			'h2',
 			null,
-			' ',
 			props.subtitle
 		)
 	);
 };
 
 Header.defaultProps = {
-	title: 'Indecision App by Default',
-	subtitle: 'Put your life in tha hand of a computer'
+	title: 'Indecision'
 };
 
 var Action = function Action(props) {
@@ -130,8 +144,7 @@ var Action = function Action(props) {
 			'button',
 			{
 				onClick: props.handlePick,
-				disabled: !props.hasOptions,
-				className: 'btn btn-info'
+				disabled: !props.hasOptions
 			},
 			'What should I do?'
 		)
@@ -144,7 +157,7 @@ var Options = function Options(props) {
 		null,
 		React.createElement(
 			'button',
-			{ onClick: props.handleDeleteOptions, className: 'btn btn-danger' },
+			{ onClick: props.handleDeleteOptions },
 			'Remove All'
 		),
 		props.options.map(function (option) {
@@ -169,7 +182,7 @@ var Option = function Option(props) {
 					props.handleDeleteOption(props.optionText);
 				}
 			},
-			'Remove'
+			'remove'
 		)
 	);
 };
@@ -200,7 +213,6 @@ var AddOption = function (_React$Component2) {
 			this.setState(function () {
 				return { error: error };
 			});
-			this.refs.option.value = ''; //.....
 		}
 	}, {
 		key: 'render',
@@ -216,10 +228,10 @@ var AddOption = function (_React$Component2) {
 				React.createElement(
 					'form',
 					{ onSubmit: this.handleAddOption },
-					React.createElement('input', { type: 'text', name: 'option', ref: 'option', className: 'form-control' }),
+					React.createElement('input', { type: 'text', name: 'option' }),
 					React.createElement(
 						'button',
-						{ className: 'btn btn-warning' },
+						null,
 						'Add Option'
 					)
 				)
